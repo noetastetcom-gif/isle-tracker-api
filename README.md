@@ -1,2 +1,8 @@
-# isle-tracker-api
-Site de tracker et aide pour le jeux video the isle
+{
+  "name": "isle-tracker-api",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "stripe": "^14.0.0"
+  }
+}

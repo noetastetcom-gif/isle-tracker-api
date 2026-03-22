@@ -1,0 +1,22 @@
+# Isle Tracker API
+
+Serveur webhook Stripe pour Isle Tracker Premium.
+
+## Setup
+
+### 1. Déployer sur Vercel
+- Connecte ce repo à Vercel (vercel.com → New Project → Import)
+- Ajoute les variables d'environnement dans Vercel Settings → Environment Variables :
+  - `STRIPE_SECRET_KEY` = ta clé secrète Stripe (sk_live_...)
+  - `STRIPE_WEBHOOK_SECRET` = le secret du webhook (whsec_...)
+
+### 2. Configurer le webhook Stripe
+- Va dans Stripe Dashboard → Développeurs → Webhooks
+- Clique "Ajouter un endpoint"
+- URL : `https://ton-projet.vercel.app/api/webhook`
+- Événements : `checkout.session.completed`, `customer.subscription.deleted`
+- Copie le "Signing secret" (whsec_...) et mets-le dans Vercel
+
+### Endpoints
+- `POST /api/webhook` — reçoit les notifications Stripe
+- `GET /api/check?email=user@email.com` — vérifie si un email est premium
